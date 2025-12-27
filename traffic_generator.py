@@ -1,17 +1,13 @@
 import random
 import time
+from queue_ds import Queue
 
-vehicle_id = 1
-roads = ['A', 'B', 'C', 'D']
-
-while True:
-    road = random.choice(roads)
-    lane = random.randint(1, 3)
-    filename = f"lane{road}.txt"
-
-    with open(filename, "a") as f:
-    f.write(f"{vehicle_id},{lane}\n")
-
-    print(f"Generated Vehicle {vehicle_id} on Road {road} Lane {lane}")
-    vehicle_id += 1
-    time.sleep(1)
+def generate_vehicles(lanes):
+    vehicle_id = 1
+    lane_names = list(lanes.keys())
+    while True:
+        lane = random.choice(lane_names)  # Random lane
+        lanes[lane].enqueue(vehicle_id)
+        print(f"Vehicle {vehicle_id} generated in {lane}")
+        vehicle_id += 1
+        time.sleep(1)
