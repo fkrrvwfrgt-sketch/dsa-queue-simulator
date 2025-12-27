@@ -1,35 +1,35 @@
-# Assignment 1: Queue Based Traffic Light Simulator
-
-## Name:Sara Basnet
-## Roll Number:10
-## Course: COMP202
+# Assignment 1 - Traffic Light Simulator
+**Course:** Data Structures and Algorithms (COMP202)  
+**Name:** Sara Basnet
+**Roll Number:** 10
 
 ## Summary
-This project simulates a traffic junction using queue data structures. Vehicles are generated randomly and processed using FIFO queues. A priority lane is handled when vehicle count exceeds a threshold.
+This project simulates a traffic junction with 4 roads (A,B,C,D) and 3 lanes each. The program implements vehicle queues using a queue data structure. Priority lane AL2 is served first if more than 10 vehicles are waiting. Normal lanes are served round-robin. Left-turn lanes are served if available.
 
 ## Data Structures Used
-
-| Data Structure | Implementation | Purpose |
-|---------------|---------------|--------|
-| Queue | Python list | Store vehicles per lane |
+- **Queue:** FIFO queue implemented in `queue_ds.py`  
+- **Dictionary:** For storing all lane queues  
 
 ## Functions Implemented
-- enqueue()
-- dequeue()
-- size()
-- is_empty()
+- `enqueue(item)`  
+- `dequeue()`  
+- `size()`  
+- `generate_vehicles(lanes)`  
+- `traffic_simulator()`  
+- `print_lane_status()`  
 
-## Traffic Algorithm
-1. Generate vehicles
-2. Add vehicles to queues
-3. Check priority lane condition
-4. Serve vehicles
-5. Resume normal operation
+## Algorithm
+1. Generate vehicles randomly for all lanes.  
+2. If AL2 has >10 vehicles → serve AL2 until <5 vehicles.  
+3. Serve normal lanes in round-robin.  
+4. Serve left-turn lanes if vehicles present.  
 
 ## Time Complexity
-- Enqueue: O(1)
-- Dequeue: O(n)
-- Priority check: O(1)
+- Enqueue: O(1)  
+- Dequeue: O(n) (because we use list pop(0))  
 
-## GitHub Repository
-(put your repo link here)
+## How to Run
+1. Open terminal in `dsa-queue-simulator` folder.  
+2. Run:
+```bash
+python simulator.py
